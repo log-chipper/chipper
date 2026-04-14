@@ -1,0 +1,9 @@
+# Build files
+build/
+.cache/
+.task/
+compile_commands.json
+
+# MacOS
+.DS_Store
+

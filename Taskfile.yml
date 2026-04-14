@@ -1,0 +1,85 @@
+version: "3"
+
+vars:
+  BUILD_DIR: build
+  CC: ninja
+
+tasks:
+  clean:
+    desc: Cleans up build artifacts
+    cmds:
+      - rm -rf build
+      - rm -rf pkg
+      - rm -rf docs
+    status:
+      - test ! -d build
+      - test ! -d pkg
+      - test ! -d docs
+
+  setup:
+    desc: Sets up build directory
+    preconditions:
+      - sh: which meson
+        msg: Missing 'meson' please add it to your PATH
+      - sh: which {{ .CC }}
+        msg: Missing '{{ .CC }}' please add it to your PATH'
+    sources:
+      - meson.build
+    cmds:
+      - meson setup --reconfigure {{ .BUILD_DIR }} --backend={{ .CC }}
+      - ln -sf {{ .BUILD_DIR }}/compile_commands.json .
+    generates:
+      - "{{ .BUILD_DIR }}/build.ninja"
+      - "{{ .BUILD_DIR }}/compile_commands.json"
+
+  build:
+    desc: Builds the main binary
+    deps: [setup]
+    cmds:
+      - meson compile -C {{ .BUILD_DIR }}
+    sources:
+      - src/**/*.c
+      - include/**/*.h
+      - meson.build
+    generates:
+      - "{{ .BUILD_DIR }}/chipper"
+
+  build:watch:
+    desc: Watches and builds main binary
+    deps: [build]
+    watch: true
+    cmds:
+      - task: build
+
+  run:
+    desc: Builds and runs main binary
+    deps: [build]
+    cmd: "./{{ .BUILD_DIR }}/chipper {{ .CLI_ARGS }}"
+
+  run:watch:
+    desc: Watches for changes and runs main binary
+    watch: true
+    cmds:
+      - task: run
+
+  docs:
+    desc: Generates documentation pages
+    preconditions:
+      - sh: which doxygen
+        msg: Missing 'doxygen' please add it to your PATH
+    cmd: doxygen Doxyfile
+    sources:
+      - src/**/*.c
+      - include/**/*.h
+    generates:
+      - docs/**
+
+  docs:open:
+    desc: Opens docs in your browser
+    deps: [docs]
+    cmds:
+      - open docs/html/index.html
+
+  default:
+    cmds:
+      - task: run
