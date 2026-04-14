@@ -1,0 +1,7 @@
+[wrap-git]
+url = https://github.com/arp242/toml-c.git
+revision = main
+depth = 1
+
+[provide]
+toml-c = toml_dep

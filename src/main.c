@@ -1,3 +1,8 @@
+/**
+ * @file main.c
+ * @author Darwin Cereska (darwin@darwincereska.dev)
+ */
+
 #include "chipper_daemon.h"
 #include "chipper_common.h"
 #include <stdio.h>

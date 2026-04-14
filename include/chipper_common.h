@@ -1,7 +1,8 @@
 /**
-* @file chipper_common.h
-* @brief Common definitions and small helpers
-*/
+ * @file chipper_common.h
+ * @author Darwin Cereska (darwin@darwincereska.dev)
+ * @brief Standard options and small helpers
+ */
 
 #ifndef CHIPPER_COMMON_H
 #define CHIPPER_COMMON_H

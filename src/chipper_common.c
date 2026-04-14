@@ -1,6 +1,7 @@
 /**
-* @file chipper_common.c
-*/
+ * @file chipper_common.c
+ * @author Darwin Cereska (darwin@darwincereska.dev)
+ */
 
 #include "chipper_common.h"
 #include <stdlib.h>

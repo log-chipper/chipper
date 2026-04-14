@@ -1,7 +1,8 @@
 /**
-* @file chipper_log.h
-* @brief Low-level log output
-*/
+ * @file chipper_log.h
+ * @author Darwin Cereska (darwin@darwincereska.dev)
+ * @brief Logging functions
+ */
 
 #ifndef CHIPPER_LOG_H
 #define CHIPPER_LOG_H

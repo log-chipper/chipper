@@ -1,6 +1,8 @@
 /**
-* @file chipper_daemon
-*/
+ * @file chipper_daemon.h
+ * @author Darwin Cereska (darwin@darwincereska.dev)
+ * @brief Daemon functions
+ */
 
 #ifndef CHIPPER_DAEMON_H
 #define CHIPPER_DAEMON_H

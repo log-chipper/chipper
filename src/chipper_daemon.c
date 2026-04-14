@@ -1,6 +1,7 @@
 /**
-* @file chipper_daemon.c
-*/
+ * @file chipper_daemon.c
+ * @author Darwin Cereska (darwin@darwincereska.dev)
+ */
 
 #include "chipper_daemon.h"
 #include "chipper_log.h"
