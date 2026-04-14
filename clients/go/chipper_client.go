@@ -1,4 +1,4 @@
-package chipper
+package v1
 
 import (
 	"fmt"
